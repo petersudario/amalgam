@@ -7,7 +7,7 @@ extends CharacterBody2D
 
 
 func _ready():
-	#animationTree.set("parameters/Idle/blend_position", starting_drection)
+
 	update_animation_parameters(starting_direction)
 
 func _physics_process(_delta):
