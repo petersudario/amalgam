@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Characters/you.gd" id="1_khlpx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tt5rl"]
-size = Vector2(13, 14)
+size = Vector2(9, 14)
 
 [sub_resource type="Animation" id="Animation_krlem"]
 length = 0.001
@@ -230,7 +230,7 @@ states/Walk/node = SubResource("AnimationNodeBlendSpace2D_6gny6")
 states/Walk/position = Vector2(563, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_q5ix2"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_riqd5"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_kcl08")]
 
-[node name="you" type="CharacterBody2D"]
+[node name="you" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_khlpx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -241,7 +241,7 @@ hframes = 8
 vframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_tt5rl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
