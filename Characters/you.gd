@@ -8,7 +8,10 @@ class_name PlayerCharacter
 @onready var state_machine = animation_tree.get("parameters/playback")
 
 func _ready():
-
+	if Global.player_position != Vector2():
+		global_position = Global.player_position
+		Global.player_position = Vector2()
+		
 	update_animation_parameters(starting_direction)
 
 func _physics_process(_delta):
@@ -38,3 +41,4 @@ func pick_new_state():
 		state_machine.travel("Walk")
 	else:
 		state_machine.travel("Idle")
+
