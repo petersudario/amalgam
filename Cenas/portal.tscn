@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://dd22w6o7vi7wu"]
 
 [sub_resource type="GDScript" id="GDScript_5ugwt"]
+resource_local_to_scene = true
 script/source = "extends Area2D
 
-@export var next_scene: String = \"res://Levels/area5.tscn\"
+@export var next_scene: String = \"\"
 @export var destination_position: Vector2
 var entered = false
 

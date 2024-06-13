@@ -6,7 +6,7 @@ func _ready():
 		# Lógica para iniciar o jogo
 		print("Iniciando o jogo...")
 		# Exemplo: mudar para a cena do jogo
-		get_tree().change_scene("res://Levels/SupplyRoom.tscn")
+		get_tree().change_scene_to_file("res://Levels/SupplyRoom.tscn")
 	)
 	
 	$ButtonControles.connect("pressed", func():
