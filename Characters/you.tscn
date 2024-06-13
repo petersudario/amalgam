@@ -1,10 +1,13 @@
-[gd_scene load_steps=28 format=3 uid="uid://n3g8xuh3sil3"]
+[gd_scene load_steps=29 format=3 uid="uid://n3g8xuh3sil3"]
 
 [ext_resource type="Texture2D" uid="uid://csnq24ptls0mm" path="res://Art/Characters/character_spritesheet.png" id="1_gpfma"]
 [ext_resource type="Script" path="res://Characters/you.gd" id="1_khlpx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tt5rl"]
 size = Vector2(9, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5snr7"]
+size = Vector2(15.5, 16)
 
 [sub_resource type="Animation" id="Animation_krlem"]
 length = 0.001
@@ -244,6 +247,12 @@ vframes = 3
 position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_tt5rl")
 
+[node name="Hitbox" type="Area2D" parent="CollisionShape2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/Hitbox"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_5snr7")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_63hbd")
@@ -254,3 +263,21 @@ tree_root = SubResource("AnimationNodeStateMachine_x4pjk")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(0, -0.024229)
 parameters/Walk/blend_position = Vector2(-0.00315958, -0.00484574)
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -4.0
+offset_top = -12.0
+offset_right = 3.0
+offset_bottom = -6.0
+
+[node name="HPLabel" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = -14.0
+offset_right = 32.0
+offset_bottom = 9.0
+scale = Vector2(0.248992, 0.28029)
+
+[connection signal="area_entered" from="CollisionShape2D/Hitbox" to="." method="_on_hitbox_area_entered"]

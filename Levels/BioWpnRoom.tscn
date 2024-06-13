@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://debkf87xpmjtn"]
+[gd_scene load_steps=68 format=3 uid="uid://debkf87xpmjtn"]
 
 [ext_resource type="PackedScene" uid="uid://n3g8xuh3sil3" path="res://Characters/you.tscn" id="1_8r3ik"]
 [ext_resource type="Texture2D" uid="uid://k71103lt8g1w" path="res://Art/Tiles/Tiles.png" id="2_jmkpb"]
@@ -31013,9 +31013,6 @@ sources/30 = SubResource("TileSetAtlasSource_xogt7")
 sources/31 = SubResource("TileSetAtlasSource_6ubfn")
 sources/24 = SubResource("TileSetAtlasSource_gnxon")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwvmi"]
-size = Vector2(25.7897, 29.3752)
-
 [sub_resource type="Animation" id="Animation_c045u"]
 resource_name = "new_animation"
 length = 2.8
@@ -31053,6 +31050,12 @@ _data = {
 "new_animation": SubResource("Animation_c045u")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4016"]
+size = Vector2(27.7737, 31.4011)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwvmi"]
+size = Vector2(25.7897, 29.3752)
+
 [node name="GameLevel" type="Node2D"]
 
 [node name="SupplyRoomPortal2" parent="." instance=ExtResource("18_t4yjl")]
@@ -31061,7 +31064,7 @@ rotation = -3.12933
 scale = Vector2(1.53698, 1.53704)
 skew = 0.00560844
 next_scene = "res://Levels/area5.tscn"
-destination_position = Vector2(-133, -104)
+destination_position = Vector2(-2, -3)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_8r3ik")]
 z_index = -1
@@ -31086,15 +31089,11 @@ layer_2/tile_data = PackedInt32Array(65553, 1507358, 2, 131089, 1507358, 3, 6555
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-200, 21)
 
-[node name="Alma" type="CharacterBody2D" parent="."]
+[node name="Alma" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = -1
-position = Vector2(-199, -83)
+position = Vector2(-113, -80)
 scale = Vector2(1.00815, 0.987228)
 script = ExtResource("15_4glqo")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Alma"]
-position = Vector2(0, 0.506454)
-shape = SubResource("RectangleShape2D_cwvmi")
 
 [node name="Alma" type="Sprite2D" parent="Alma" groups=["Enemy"]]
 texture_filter = 1
@@ -31112,6 +31111,16 @@ speed_scale = 2.667
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Alma/Alma"]
 position = Vector2(-35.709, -1.01294)
 volume_db = -41.6
+
+[node name="AreaInimigo" type="Area2D" parent="Alma" groups=["Enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alma/AreaInimigo"]
+position = Vector2(0, 0.506485)
+shape = SubResource("RectangleShape2D_v4016")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alma"]
+position = Vector2(0, 0.506454)
+shape = SubResource("RectangleShape2D_cwvmi")
 
 [node name="SupplyRoomPortal" parent="." instance=ExtResource("18_t4yjl")]
 position = Vector2(-179, 32)

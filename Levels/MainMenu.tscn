@@ -30,20 +30,20 @@ texture = ExtResource("2_7bkky")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 784.357
-offset_top = 341.979
-offset_right = 871.357
-offset_bottom = 368.979
+offset_left = 787.378
+offset_top = 326.095
+offset_right = 874.378
+offset_bottom = 353.095
 scale = Vector2(4, 4)
 theme_override_fonts/font = ExtResource("3_5opxd")
 text = "Amalgam"
 
 [node name="ButtonIniciarJogo" type="Button" parent="."]
 layout_mode = 0
-offset_left = 845.777
-offset_top = 394.304
-offset_right = 896.777
-offset_bottom = 420.304
+offset_left = 842.756
+offset_top = 386.829
+offset_right = 893.756
+offset_bottom = 412.829
 scale = Vector2(3, 3)
 theme_override_fonts/font = ExtResource("2_683uh")
 text = "Iniciar"
@@ -51,10 +51,10 @@ flat = true
 
 [node name="ButtonControles" type="Button" parent="."]
 layout_mode = 0
-offset_left = 806.508
-offset_top = 455.038
-offset_right = 881.508
-offset_bottom = 481.038
+offset_left = 805.502
+offset_top = 442.891
+offset_right = 880.502
+offset_bottom = 468.891
 scale = Vector2(3, 3)
 theme_override_fonts/font = ExtResource("2_683uh")
 text = "Controles
@@ -63,10 +63,10 @@ flat = true
 
 [node name="ButtonSair" type="Button" parent="."]
 layout_mode = 0
-offset_left = 860.0
-offset_top = 516.0
-offset_right = 895.0
-offset_bottom = 542.0
+offset_left = 864.907
+offset_top = 497.085
+offset_right = 899.907
+offset_bottom = 523.085
 scale = Vector2(3, 3)
 theme_override_fonts/font = ExtResource("2_683uh")
 text = "Sair"
@@ -74,7 +74,6 @@ flat = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(911.224, 450.366)
-scale = Vector2(1, 1)
 
 [connection signal="pressed" from="ButtonIniciarJogo" to="." method="_on_button_iniciar_jogo_pressed"]
 [connection signal="pressed" from="ButtonControles" to="." method="_on_button_controles_pressed"]
