@@ -1,0 +1,28 @@
+extends Control
+
+func _ready():
+	# Conectando os sinais dos botões usando funções anônimas
+	$ButtonIniciarJogo.connect("pressed", func():
+		# Lógica para iniciar o jogo
+		print("Iniciando o jogo...")
+		# Exemplo: mudar para a cena do jogo
+		get_tree().change_scene("res://Levels/SupplyRoom.tscn")
+	)
+	
+	$ButtonControles.connect("pressed", func():
+		# Lógica para exibir os controles
+		print("Exibindo os controles...")
+		# Exemplo: mostrar uma caixa de mensagem com os controles
+		# Exemplo hipotético:
+		# var dialog = create_dialog_box("Controles", "WASD para mover, Espaço para pular")
+		# add_child(dialog)
+	)
+	
+	$ButtonSair.connect("pressed", func():
+		# Lógica para sair do jogo
+		print("Saindo do jogo...")
+		# Exemplo: fechar o jogo
+		get_tree().quit()
+	)
+	
+

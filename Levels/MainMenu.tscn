@@ -1,0 +1,95 @@
+[gd_scene load_steps=4 format=3 uid="uid://omr2xlr0xlch"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_vv33n"]
+[ext_resource type="FontFile" uid="uid://b4rypl1ik8lk7" path="res://Kurland.ttf" id="2_683uh"]
+[ext_resource type="FontFile" uid="uid://dck8clg6amnc7" path="res://Kurland_Font_0_33/Kurland.otf" id="3_5opxd"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.99317, 1.07024)
+size_flags_vertical = 4
+script = ExtResource("1_vv33n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0253638, 0.0253638, 0.0253638, 1)
+
+[node name="Camera2D" type="Camera2D" parent="ColorRect"]
+scale = Vector2(749.235, -37.3525)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 850.0
+offset_top = 188.0
+offset_right = 937.0
+offset_bottom = 215.0
+scale = Vector2(4, 4)
+theme_override_fonts/font = ExtResource("3_5opxd")
+text = "Amalgam"
+
+[node name="ButtonIniciarJogo" type="Button" parent="."]
+layout_mode = 0
+offset_left = 717.0
+offset_top = 350.0
+offset_right = 889.0
+offset_bottom = 390.0
+scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("2_683uh")
+text = "Iniciar"
+flat = true
+
+[node name="ButtonControles" type="Button" parent="."]
+layout_mode = 0
+offset_left = 745.0
+offset_top = 422.0
+offset_right = 903.0
+offset_bottom = 467.0
+scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("2_683uh")
+text = "Controles
+"
+flat = true
+
+[node name="ButtonSair" type="Button" parent="."]
+layout_mode = 0
+offset_left = 634.0
+offset_top = 508.0
+offset_right = 860.0
+offset_bottom = 555.0
+scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("2_683uh")
+text = "Sair"
+flat = true
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 553.0
+offset_top = 942.0
+offset_right = 890.0
+offset_bottom = 965.0
+scale = Vector2(2.5, 2.5)
+text = "Feito por Carlos Rosemberg, Pedro Sudario e Julia"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 435.842
+offset_top = 178.066
+offset_right = 475.842
+offset_bottom = 201.066
+scale = Vector2(-0.0839278, 0.33721)
+theme_override_fonts/font = ExtResource("3_5opxd")
+text = "asdadasdasdasdasdasd"
+
+[connection signal="pressed" from="ButtonIniciarJogo" to="." method="_on_button_iniciar_jogo_pressed"]
+[connection signal="pressed" from="ButtonControles" to="." method="_on_button_controles_pressed"]
+[connection signal="pressed" from="ButtonSair" to="." method="_on_button_sair_pressed"]
