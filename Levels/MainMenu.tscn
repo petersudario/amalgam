@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://omr2xlr0xlch"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_vv33n"]
+[ext_resource type="Texture2D" uid="uid://dnd0jqsa3xeua" path="res://Art/Wallpaper/OIP.jpeg" id="2_7bkky"]
+[ext_resource type="FontFile" uid="uid://b4rypl1ik8lk7" path="res://Kurland.ttf" id="2_683uh"]
+[ext_resource type="FontFile" uid="uid://dck8clg6amnc7" path="res://Kurland_Font_0_33/Kurland.otf" id="3_5opxd"]
+
+[node name="MainMenu" type="Control"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.99317, 1.07024)
+size_flags_vertical = 4
+script = ExtResource("1_vv33n")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7bkky")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 784.357
+offset_top = 341.979
+offset_right = 871.357
+offset_bottom = 368.979
+scale = Vector2(4, 4)
+theme_override_fonts/font = ExtResource("3_5opxd")
+text = "Amalgam"
+
+[node name="ButtonIniciarJogo" type="Button" parent="."]
+layout_mode = 0
+offset_left = 845.777
+offset_top = 394.304
+offset_right = 896.777
+offset_bottom = 420.304
+scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("2_683uh")
+text = "Iniciar"
+flat = true
+
+[node name="ButtonControles" type="Button" parent="."]
+layout_mode = 0
+offset_left = 806.508
+offset_top = 455.038
+offset_right = 881.508
+offset_bottom = 481.038
+scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("2_683uh")
+text = "Controles
+"
+flat = true
+
+[node name="ButtonSair" type="Button" parent="."]
+layout_mode = 0
+offset_left = 860.0
+offset_top = 516.0
+offset_right = 895.0
+offset_bottom = 542.0
+scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("2_683uh")
+text = "Sair"
+flat = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(911.224, 450.366)
+scale = Vector2(1, 1)
+
+[connection signal="pressed" from="ButtonIniciarJogo" to="." method="_on_button_iniciar_jogo_pressed"]
+[connection signal="pressed" from="ButtonControles" to="." method="_on_button_controles_pressed"]
+[connection signal="pressed" from="ButtonSair" to="." method="_on_button_sair_pressed"]

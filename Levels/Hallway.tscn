@@ -12323,7 +12323,7 @@ position = Vector2(306, 110)
 
 [node name="SupplyCenterPortal" parent="." instance=ExtResource("10_jcwvh")]
 position = Vector2(262, 96)
-nextScene = "res://Levels/SupplyRoom.tscn"
+next_scene = "res://Levels/SupplyRoom.tscn"
 destination_position = Vector2(1, 0)
 
 [connection signal="body_exited" from="SupplyCenterPortal" to="SupplyCenterPortal" method="_on_body_exited"]
