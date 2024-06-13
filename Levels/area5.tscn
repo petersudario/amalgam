@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://xovqscefkqfo"]
+[gd_scene load_steps=40 format=3 uid="uid://xovqscefkqfo"]
 
 [ext_resource type="PackedScene" uid="uid://n3g8xuh3sil3" path="res://Characters/you.tscn" id="1_yumoi"]
 [ext_resource type="Texture2D" uid="uid://k71103lt8g1w" path="res://Art/Tiles/Tiles.png" id="2_olhf4"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://d0pxqy4rvgse7" path="res://Art/Tiles/Tiles-Door-packs.png" id="13_t6aem"]
 [ext_resource type="Texture2D" uid="uid://r82l123vqjrf" path="res://Art/Tiles/morgue_tilesheet_0.png" id="14_dat77"]
 [ext_resource type="PackedScene" uid="uid://dd22w6o7vi7wu" path="res://Cenas/portal.tscn" id="15_7avy7"]
+[ext_resource type="Texture2D" uid="uid://b7edg0e86ae4q" path="res://Art/Characters/alma_spritesheet.png" id="16_4tfxl"]
+[ext_resource type="AudioStream" uid="uid://ciccxgxq30ri8" path="res://Sounds/goo_slime_sound.mp3" id="17_ncv1c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tbx8v"]
 texture = ExtResource("2_olhf4")
@@ -22633,11 +22635,48 @@ sources/14 = SubResource("TileSetAtlasSource_odmn7")
 sources/15 = SubResource("TileSetAtlasSource_sm85v")
 sources/16 = SubResource("TileSetAtlasSource_hmcn4")
 
+[sub_resource type="Animation" id="Animation_c045u"]
+resource_name = "new_animation"
+length = 2.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 1, 2, 3, 4, 5, 6, 6, 7, 8, 9, 10, 11, 12]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("17_ncv1c")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bxige"]
+_data = {
+"new_animation": SubResource("Animation_c045u")
+}
+
 [node name="GameLevel" type="Node2D"]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_yumoi")]
 z_as_relative = false
-position = Vector2(-80, -30)
+position = Vector2(-1.99999, -3)
 scale = Vector2(1.03844, 0.897418)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PlayerCharacter"]
@@ -22656,7 +22695,7 @@ layer_1/z_index = -5
 layer_1/tile_data = PackedInt32Array(19, 131080, 18, 65555, 131080, 19, 20, 196616, 18, 65556, 196616, 19, 22, 131080, 18, 65558, 131080, 19, 23, 196616, 18, 65559, 196616, 19, 262166, 524290, 4, 131095, 589826, 4, 196620, 2, 1, 262156, 2, 3, 327691, 131074, 2, 65547, 2, 0, 131083, 2, 1, 196619, 2, 1, 65548, 2, 0, 131084, 2, 1, 65549, 2, 0, 131085, 2, 1, 524301, 983043, 0, 393231, 983043, 0, 262170, 262152, 1342177300, 327706, 327688, 1342177300, 262169, 262152, 1342177301, 327705, 327688, 1342177301, 393242, 131080, 1342177299, 393243, 131080, 1342177298, 458779, 196616, 1342177298, 458778, 196616, 1342177299, 589850, 851976, 1342177301, 524314, 786440, 1342177301, 589851, 851976, 1342177300, 524315, 786440, 1342177300)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-80, -30)
+position = Vector2(-1.99999, -3)
 scale = Vector2(174.796, 24.1272)
 
 [node name="BioWpnRoomPortal" parent="." instance=ExtResource("15_7avy7")]
@@ -22665,5 +22704,22 @@ rotation = 1.57807
 scale = Vector2(1.02698, 1.49662)
 next_scene = "res://Levels/BioWpnRoom.tscn"
 destination_position = Vector2(-200, 21)
+
+[node name="Alma" type="Sprite2D" parent="." groups=["Enemy"]]
+texture_filter = 1
+position = Vector2(-166, -77)
+texture = ExtResource("16_4tfxl")
+hframes = 13
+frame = 1
+
+[node name="ChaserPlayer" type="AnimationPlayer" parent="Alma"]
+libraries = {
+"": SubResource("AnimationLibrary_bxige")
+}
+speed_scale = 2.667
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Alma"]
+position = Vector2(-35.709, -1.01294)
+volume_db = -41.6
 
 [connection signal="body_exited" from="BioWpnRoomPortal" to="BioWpnRoomPortal" method="_on_body_exited"]

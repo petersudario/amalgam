@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://cy1f41ma7tnwt"]
+
+[ext_resource type="Script" path="res://Levels/death_screen.gd" id="1_p6q8s"]
+[ext_resource type="Texture2D" uid="uid://dnd0jqsa3xeua" path="res://Art/Wallpaper/OIP.jpeg" id="2_ser6n"]
+[ext_resource type="FontFile" uid="uid://dck8clg6amnc7" path="res://Kurland_Font_0_33/Kurland.otf" id="3_oc3ue"]
+[ext_resource type="FontFile" uid="uid://b4rypl1ik8lk7" path="res://Kurland.ttf" id="4_31w5t"]
+
+[node name="DeathScreen" type="Control"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.99317, 1.07024)
+size_flags_vertical = 4
+script = ExtResource("1_p6q8s")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ser6n")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 732.0
+offset_top = 339.176
+offset_right = 819.0
+offset_bottom = 366.176
+scale = Vector2(4, 4)
+theme_override_fonts/font = ExtResource("3_oc3ue")
+text = "Você morreu"
+
+[node name="ButtonIniciarJogo" type="Button" parent="."]
+layout_mode = 0
+offset_left = 809.0
+offset_top = 392.0
+offset_right = 876.0
+offset_bottom = 420.0
+scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("4_31w5t")
+text = "Reiniciar
+"
+flat = true
+
+[node name="ButtonSair" type="Button" parent="."]
+layout_mode = 0
+offset_left = 836.715
+offset_top = 456.907
+offset_right = 871.715
+offset_bottom = 482.907
+scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("4_31w5t")
+text = "Sair"
+flat = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(911.224, 450.366)
+
+[connection signal="pressed" from="ButtonIniciarJogo" to="." method="_on_button_iniciar_jogo_pressed"]
+[connection signal="pressed" from="ButtonSair" to="." method="_on_button_sair_pressed"]

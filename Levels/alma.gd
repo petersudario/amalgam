@@ -16,3 +16,7 @@ func _physics_process(delta):
 		var direction = (target.position - position).normalized()
 		velocity = direction * speed
 		move_and_slide()
+		
+func _on_Enemy_body_entered(body):
+	if body.is_in_group("player"):
+		body.take_damage(50)
