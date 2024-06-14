@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dd22w6o7vi7wu"]
+[gd_scene load_steps=4 format=3 uid="uid://dd22w6o7vi7wu"]
+
+[ext_resource type="AudioStream" uid="uid://dyu8w7y1j1koo" path="res://Sounds/door_opening.mp3" id="1_a1psx"]
 
 [sub_resource type="GDScript" id="GDScript_5ugwt"]
 resource_local_to_scene = true
@@ -10,16 +12,19 @@ var entered = false
 
 func _on_body_entered(body: PhysicsBody2D):
 	if body.is_in_group(\"player\"):
+		$AudioStreamPlayer2D.play()
 		entered = true
 		Global.player_position = destination_position
 
 func _on_body_exited(body: PhysicsBody2D):
 	if body.is_in_group(\"player\"):
+		$AudioStreamPlayer2D.play()
 		entered = false
 
 func _process(delta):
-	if entered and Input.is_action_just_pressed(\"ui_accept\"):
+	if entered:
 		get_tree().change_scene_to_file(next_scene)
+
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yd2t6"]
@@ -32,5 +37,8 @@ script = SubResource("GDScript_5ugwt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(16.625, 16.625)
 shape = SubResource("RectangleShape2D_yd2t6")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_a1psx")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

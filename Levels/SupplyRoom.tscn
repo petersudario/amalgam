@@ -26346,6 +26346,7 @@ scale = Vector2(174.796, 24.1272)
 position = Vector2(2, -19)
 scale = Vector2(1.17486, 1.29383)
 next_scene = "res://Levels/Hallway.tscn"
+destination_position = Vector2(305, 108)
 
 [node name="BioWpnRoomPortal" parent="." instance=ExtResource("10_boojy")]
 position = Vector2(-111, -143)
