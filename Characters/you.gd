@@ -10,6 +10,7 @@ class_name PlayerCharacter
 @onready var hp_label: Label = $HUD/HPLabel
 var max_hp: int = 100
 var current_hp: int = 100
+var has_bluekey = false
 
 func _ready():
 	update_hud_position()
