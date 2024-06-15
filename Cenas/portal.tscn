@@ -22,8 +22,11 @@ func _on_body_exited(body: PhysicsBody2D):
 		entered = false
 
 func _process(delta):
+	if Global.player_has_bluekey and self.name == \"FlaskHallway\":
+		self.next_scene = \"res://Levels/BrokenFlaskHallway.tscn\"
 	if entered:
 		get_tree().change_scene_to_file(next_scene)
+
 
 "
 

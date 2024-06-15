@@ -31115,10 +31115,10 @@ position = Vector2(0, 0.506454)
 shape = SubResource("RectangleShape2D_cwvmi")
 
 [node name="SupplyRoomPortal" parent="." instance=ExtResource("18_t4yjl")]
-position = Vector2(-179, 32)
+position = Vector2(-166, 34)
 rotation = 1.57807
 scale = Vector2(1.02698, 1.49662)
 next_scene = "res://Levels/SupplyRoom.tscn"
-destination_position = Vector2(-133, -104)
+destination_position = Vector2(-137, -101)
 
 [connection signal="body_exited" from="SupplyRoomPortal" to="SupplyRoomPortal" method="_on_body_exited"]

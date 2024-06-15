@@ -7,6 +7,7 @@ func _ready():
 		print("Iniciando o jogo...")
 		# Exemplo: mudar para a cena do jogo
 		get_tree().change_scene_to_file("res://Levels/SupplyRoom.tscn")
+		Global.player_has_bluekey = false
 	)
 	
 	
