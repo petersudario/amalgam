@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c4evs7dtodsfb"]
+[gd_scene load_steps=47 format=3 uid="uid://c4evs7dtodsfb"]
 
 [ext_resource type="PackedScene" uid="uid://n3g8xuh3sil3" path="res://Characters/you.tscn" id="1_uojkd"]
 [ext_resource type="Texture2D" uid="uid://k71103lt8g1w" path="res://Art/Tiles/Tiles.png" id="2_b37cp"]
@@ -16,6 +16,9 @@
 [ext_resource type="Script" path="res://Levels/alma.gd" id="14_0l15w"]
 [ext_resource type="Texture2D" uid="uid://b7edg0e86ae4q" path="res://Art/Characters/alma_spritesheet.png" id="15_0cwgc"]
 [ext_resource type="AudioStream" uid="uid://ciccxgxq30ri8" path="res://Sounds/goo_slime_sound.mp3" id="16_w5ent"]
+[ext_resource type="AudioStream" uid="uid://dkpmflmuy8x5o" path="res://Sounds/three_steps.mp3" id="18_qxo3r"]
+[ext_resource type="Script" path="res://Levels/Area2D.gd" id="18_streh"]
+[ext_resource type="Texture2D" uid="uid://diy7bd317c4ya" path="res://Art/Characters/amalgamate_spritesheet.png" id="19_tdw48"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tbx8v"]
 texture = ExtResource("2_b37cp")
@@ -15431,10 +15434,55 @@ size = Vector2(27.7737, 31.4011)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iu6rj"]
 size = Vector2(25.7897, 29.3752)
 
-[node name="GameLevel" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0awdj"]
+size = Vector2(111, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qg5bp"]
+
+[sub_resource type="Animation" id="Animation_yta33"]
+resource_name = "right"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AmalgamateSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_px4ji"]
+resource_name = "left"
+length = 0.64
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AmalgamateSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 11, 12, 13]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_02qq2"]
+_data = {
+"left": SubResource("Animation_px4ji"),
+"right": SubResource("Animation_yta33")
+}
+
+[node name="BrokenFlaskHallway" type="Node2D"]
 
 [node name="you" parent="." instance=ExtResource("1_uojkd")]
-position = Vector2(415, -199)
+position = Vector2(370, 116)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="you"]
 remote_path = NodePath("../../Camera2D")
@@ -15452,7 +15500,7 @@ layer_2/name = "Overtop"
 layer_2/tile_data = PackedInt32Array(-786414, 2097153, 1610612737, -786413, 1966081, 1610612738, -655341, 2097153, 1610612736, -589806, 2097153, 1610612736, -589805, 2097153, 1610612737, -262126, 2097153, 1610612736, -786397, 2097153, 1342177281, -655325, 2097153, 1342177281, -589789, 1966081, 1342177282, -524254, 1966081, 1342177282)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(415, -199)
+position = Vector2(370, 116)
 
 [node name="SupplyCenterPortal" parent="." instance=ExtResource("13_xuirb")]
 position = Vector2(262, 96)
@@ -15508,7 +15556,7 @@ texture_filter = 1
 position = Vector2(-0.991914, 0)
 texture = ExtResource("15_0cwgc")
 hframes = 13
-frame = 6
+frame = 2
 
 [node name="ChaserPlayer" type="AnimationPlayer" parent="Alma2/Alma"]
 libraries = {
@@ -15530,5 +15578,41 @@ shape = SubResource("RectangleShape2D_j5s5k")
 position = Vector2(0, 0.506454)
 shape = SubResource("RectangleShape2D_iu6rj")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_qxo3r")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("18_streh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(428.5, 0)
+shape = SubResource("RectangleShape2D_0awdj")
+
+[node name="Amalgamate" type="CharacterBody2D" parent="."]
+position = Vector2(276, 113)
+
+[node name="AmalgamateSprite2D" type="Sprite2D" parent="Amalgamate"]
+position = Vector2(1.28421, -0.0323866)
+scale = Vector2(1.60581, 1.43548)
+texture = ExtResource("19_tdw48")
+hframes = 7
+vframes = 2
+frame = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Amalgamate"]
+position = Vector2(0.284203, -0.0323867)
+scale = Vector2(2.54121, 2.47078)
+shape = SubResource("RectangleShape2D_qg5bp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Amalgamate"]
+libraries = {
+"": SubResource("AnimationLibrary_02qq2")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
 [connection signal="body_exited" from="SupplyCenterPortal" to="SupplyCenterPortal" method="_on_body_exited"]
 [connection signal="body_exited" from="SecretArea" to="SecretArea" method="_on_body_exited"]
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
