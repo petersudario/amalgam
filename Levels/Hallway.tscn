@@ -15416,7 +15416,7 @@ destination_position = Vector2(1, 0)
 [node name="SecretArea" parent="." instance=ExtResource("10_jcwvh")]
 position = Vector2(400, -234)
 next_scene = "res://Levels/area5.tscn"
-destination_position = Vector2(-552, 263)
+destination_position = Vector2(-552, 255)
 
 [connection signal="body_exited" from="SupplyCenterPortal" to="SupplyCenterPortal" method="_on_body_exited"]
 [connection signal="body_exited" from="SecretArea" to="SecretArea" method="_on_body_exited"]

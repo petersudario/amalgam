@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://omr2xlr0xlch"]
+[gd_scene load_steps=6 format=3 uid="uid://omr2xlr0xlch"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_vv33n"]
 [ext_resource type="Texture2D" uid="uid://dnd0jqsa3xeua" path="res://Art/Wallpaper/OIP.jpeg" id="2_7bkky"]
 [ext_resource type="FontFile" uid="uid://b4rypl1ik8lk7" path="res://Kurland.ttf" id="2_683uh"]
 [ext_resource type="FontFile" uid="uid://dck8clg6amnc7" path="res://Kurland_Font_0_33/Kurland.otf" id="3_5opxd"]
+[ext_resource type="AudioStream" uid="uid://bmfh8iuygkkhw" path="res://Sounds/MainMenuMusic.mp3" id="5_dants"]
 
 [node name="MainMenu" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)
@@ -74,6 +75,10 @@ flat = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(911.224, 450.366)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_dants")
+autoplay = true
 
 [connection signal="pressed" from="ButtonIniciarJogo" to="." method="_on_button_iniciar_jogo_pressed"]
 [connection signal="pressed" from="ButtonControles" to="." method="_on_button_controles_pressed"]

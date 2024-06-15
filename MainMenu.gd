@@ -2,6 +2,7 @@ extends Control
 
 func _ready():
 	# Conectando os sinais dos botões usando funções anônimas
+	$AudioStreamPlayer2D.play()
 	$ButtonIniciarJogo.connect("pressed", func():
 		# Lógica para iniciar o jogo
 		print("Iniciando o jogo...")

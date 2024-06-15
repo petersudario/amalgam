@@ -26316,7 +26316,7 @@ sources/22 = SubResource("TileSetAtlasSource_swp2h")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_n5omd")]
 z_as_relative = false
-position = Vector2(-80, -30)
+position = Vector2(-137, -101)
 scale = Vector2(1.03844, 0.897418)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PlayerCharacter"]
@@ -26339,10 +26339,10 @@ layer_3/name = "OverTop"
 layer_3/tile_data = PackedInt32Array(65557, 2031637, 0, 131093, 2031637, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-80, -30)
+position = Vector2(-137, -101)
 scale = Vector2(174.796, 24.1272)
 
-[node name="HallwayPortal" parent="." instance=ExtResource("10_boojy")]
+[node name="FlaskHallway" parent="." instance=ExtResource("10_boojy")]
 position = Vector2(2, -19)
 scale = Vector2(1.17486, 1.29383)
 next_scene = "res://Levels/Hallway.tscn"
@@ -26361,5 +26361,5 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[connection signal="body_exited" from="HallwayPortal" to="HallwayPortal" method="_on_body_exited"]
+[connection signal="body_exited" from="FlaskHallway" to="FlaskHallway" method="_on_body_exited"]
 [connection signal="body_exited" from="BioWpnRoomPortal" to="BioWpnRoomPortal" method="_on_body_exited"]

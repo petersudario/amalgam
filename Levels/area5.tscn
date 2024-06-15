@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://xovqscefkqfo"]
+[gd_scene load_steps=42 format=3 uid="uid://xovqscefkqfo"]
 
 [ext_resource type="PackedScene" uid="uid://n3g8xuh3sil3" path="res://Characters/you.tscn" id="1_yumoi"]
 [ext_resource type="Texture2D" uid="uid://k71103lt8g1w" path="res://Art/Tiles/Tiles.png" id="2_olhf4"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://r82l123vqjrf" path="res://Art/Tiles/morgue_tilesheet_0.png" id="14_dat77"]
 [ext_resource type="PackedScene" uid="uid://dd22w6o7vi7wu" path="res://Cenas/portal.tscn" id="15_7avy7"]
 [ext_resource type="Script" path="res://Levels/BlueKeyRegion.gd" id="17_28dt1"]
+[ext_resource type="AudioStream" uid="uid://e3h0vghasay1" path="res://Sounds/item_equip.mp3" id="18_lytvs"]
+[ext_resource type="AudioStream" uid="uid://bhnxbw056bjie" path="res://Sounds/glass_shatter.mp3" id="19_sm21k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tbx8v"]
 texture = ExtResource("2_olhf4")
@@ -23939,7 +23941,7 @@ sources/1 = SubResource("TileSetAtlasSource_d6kom")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("1_yumoi")]
 z_as_relative = false
-position = Vector2(-552, 263)
+position = Vector2(-552, 255)
 scale = Vector2(1.03844, 0.897418)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PlayerCharacter"]
@@ -23959,11 +23961,11 @@ layer_1/z_index = -5
 layer_1/tile_data = PackedInt32Array(19, 196613, 13, 65555, 196613, 13, 20, 196613, 13, 65556, 196613, 13, 22, 196613, 13, 65558, 196613, 13, 23, 196613, 13, 65559, 196613, 13, 131095, 262144, 1610612741, 65547, 196613, 13, 131083, 262144, 1610612741, 65548, 196613, 13, 131084, 262144, 1610612741, 65549, 196613, 13, 131085, 262144, 1610612741, 524301, 983043, 0, 393231, 983043, 0, 262170, 262152, 1342177300, 327706, 327688, 1342177300, 262169, 262152, 1342177301, 327705, 327688, 1342177301, 393242, 131080, 1342177299, 393243, 131080, 1342177298, 458779, 196616, 1342177298, 458778, 196616, 1342177299, 589850, 851976, 1342177301, 524314, 786440, 1342177301, 589851, 851976, 1342177300, 524315, 786440, 1342177300, 131097, 262144, 1610612741, 131096, 262144, 1610612741, 65557, 196613, 13, 21, 196613, 13, 131094, 262144, 1610612741, 131093, 262144, 1610612741)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-552, 263)
+position = Vector2(-552, 255)
 scale = Vector2(174.796, 24.1272)
 
-[node name="BioWpnRoomPortal" parent="." instance=ExtResource("15_7avy7")]
-position = Vector2(-525, 267)
+[node name="FlaskHallway" parent="." instance=ExtResource("15_7avy7")]
+position = Vector2(-527, 270)
 rotation = 1.57807
 scale = Vector2(1.02698, 1.49662)
 next_scene = "res://Levels/Hallway.tscn"
@@ -23985,6 +23987,15 @@ position = Vector2(-550, 142)
 scale = Vector2(1.05804, 0.972902)
 shape = SubResource("RectangleShape2D_ygmq8")
 
-[connection signal="body_exited" from="BioWpnRoomPortal" to="BioWpnRoomPortal" method="_on_body_exited"]
+[node name="GrabSFX" type="AudioStreamPlayer2D" parent="BlueKeyRegion"]
+stream = ExtResource("18_lytvs")
+
+[node name="GlassShatterSFX" type="AudioStreamPlayer2D" parent="BlueKeyRegion"]
+stream = ExtResource("19_sm21k")
+
+[node name="Timer" type="Timer" parent="BlueKeyRegion"]
+wait_time = 2.0
+
+[connection signal="body_exited" from="FlaskHallway" to="FlaskHallway" method="_on_body_exited"]
 [connection signal="area_entered" from="BlueKeyRegion" to="PlayerCharacter" method="_on_blue_key_region_area_entered"]
 [connection signal="area_entered" from="BlueKeyRegion" to="BlueKeyRegion" method="_on_area_entered"]
