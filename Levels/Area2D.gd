@@ -1,7 +1,7 @@
 extends Area2D
 
 func _ready():
-	pass # Replace with function body.
+	pass 
 
 func _process(delta):
 	pass
@@ -20,4 +20,5 @@ func _on_area_entered(area):
 		await self.delay(0.4)
 		$"../Amalgamate".go_to(368, 114)
 		await self.delay(3)
+		Global.boss_triger = true
 		get_tree().paused = false
