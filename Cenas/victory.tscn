@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://de87bmwabxwjk"]
+
+[ext_resource type="Script" path="res://Cenas/victory.gd" id="1_e0l81"]
+[ext_resource type="Texture2D" uid="uid://dnd0jqsa3xeua" path="res://Art/Wallpaper/OIP.jpeg" id="2_0yrne"]
+[ext_resource type="FontFile" uid="uid://dck8clg6amnc7" path="res://Kurland_Font_0_33/Kurland.otf" id="3_1v6ol"]
+[ext_resource type="FontFile" uid="uid://b4rypl1ik8lk7" path="res://Kurland.ttf" id="4_g2m3a"]
+[ext_resource type="AudioStream" uid="uid://bmfh8iuygkkhw" path="res://Sounds/MainMenuMusic.mp3" id="5_8ivrc"]
+
+[node name="Victory" type="Control"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.00089303
+scale = Vector2(0.99317, 1.07024)
+size_flags_vertical = 4
+script = ExtResource("1_e0l81")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0yrne")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 825.292
+offset_top = 361.351
+offset_right = 921.292
+offset_bottom = 400.351
+rotation = 0.00196702
+scale = Vector2(1.85395, 1.69821)
+theme_override_fonts/font = ExtResource("3_1v6ol")
+text = "Vitória!
+Você escapou!
+"
+
+[node name="ButtonSair" type="Button" parent="."]
+layout_mode = 0
+offset_left = 851.379
+offset_top = 456.678
+offset_right = 886.379
+offset_bottom = 482.678
+scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("4_g2m3a")
+text = "Sair"
+flat = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(911.224, 450.366)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_8ivrc")
+autoplay = true
+
+[connection signal="pressed" from="ButtonSair" to="." method="_on_button_sair_pressed"]

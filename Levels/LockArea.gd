@@ -9,7 +9,7 @@ func _ready():
 func _process(delta):
 	if is_in_area:
 		if count >= 15:
-			print("fim de jogo")
+			get_tree().change_scene_to_file("res://Cenas/victory.tscn")
 		elif Input.is_action_just_pressed("ui_accept"):
 			$AudioStreamPlayer2D.play()
 			count = count + 1

@@ -1,10 +1,115 @@
-[gd_scene load_steps=6 format=3 uid="uid://omr2xlr0xlch"]
+[gd_scene load_steps=15 format=3 uid="uid://omr2xlr0xlch"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_vv33n"]
 [ext_resource type="Texture2D" uid="uid://dnd0jqsa3xeua" path="res://Art/Wallpaper/OIP.jpeg" id="2_7bkky"]
 [ext_resource type="FontFile" uid="uid://b4rypl1ik8lk7" path="res://Kurland.ttf" id="2_683uh"]
 [ext_resource type="FontFile" uid="uid://dck8clg6amnc7" path="res://Kurland_Font_0_33/Kurland.otf" id="3_5opxd"]
 [ext_resource type="AudioStream" uid="uid://bmfh8iuygkkhw" path="res://Sounds/MainMenuMusic.mp3" id="5_dants"]
+[ext_resource type="Script" path="res://Levels/MenuAmalgamate.gd" id="6_jjc6g"]
+[ext_resource type="Texture2D" uid="uid://diy7bd317c4ya" path="res://Art/Characters/amalgamate_spritesheet.png" id="7_u1uqv"]
+[ext_resource type="AudioStream" uid="uid://dpg5u5t2jlv4u" path="res://Sounds/stomp.mp3" id="8_shwa2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrrvd"]
+
+[sub_resource type="Animation" id="Animation_p5i5k"]
+resource_name = "idle"
+length = 0.65
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AmalgamateSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 11, 12, 13]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3hg8h"]
+_data = {
+"idle": SubResource("Animation_p5i5k")
+}
+
+[sub_resource type="Animation" id="Animation_px4ji"]
+resource_name = "left"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AmalgamateSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 11, 12, 13]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_shwa2")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_shwa2")
+}],
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_yta33"]
+resource_name = "right"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AmalgamateSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_shwa2")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_shwa2")
+}],
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_02qq2"]
+_data = {
+"left": SubResource("Animation_px4ji"),
+"right": SubResource("Animation_yta33")
+}
 
 [node name="MainMenu" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)
@@ -31,44 +136,32 @@ texture = ExtResource("2_7bkky")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 787.378
-offset_top = 326.095
-offset_right = 874.378
-offset_bottom = 353.095
-scale = Vector2(4, 4)
+offset_left = 841.749
+offset_top = 371.879
+offset_right = 906.749
+offset_bottom = 389.879
+scale = Vector2(2.18315, 1.86547)
 theme_override_fonts/font = ExtResource("3_5opxd")
 text = "Amalgam"
 
 [node name="ButtonIniciarJogo" type="Button" parent="."]
 layout_mode = 0
-offset_left = 842.756
-offset_top = 386.829
-offset_right = 893.756
-offset_bottom = 412.829
-scale = Vector2(3, 3)
+offset_left = 866.921
+offset_top = 432.613
+offset_right = 917.921
+offset_bottom = 458.613
+scale = Vector2(1.7416, 1.36006)
 theme_override_fonts/font = ExtResource("2_683uh")
 text = "Iniciar"
 flat = true
 
-[node name="ButtonControles" type="Button" parent="."]
-layout_mode = 0
-offset_left = 805.502
-offset_top = 442.891
-offset_right = 880.502
-offset_bottom = 468.891
-scale = Vector2(3, 3)
-theme_override_fonts/font = ExtResource("2_683uh")
-text = "Controles
-"
-flat = true
-
 [node name="ButtonSair" type="Button" parent="."]
 layout_mode = 0
-offset_left = 864.907
-offset_top = 497.085
-offset_right = 899.907
-offset_bottom = 523.085
-scale = Vector2(3, 3)
+offset_left = 880.011
+offset_top = 477.463
+offset_right = 915.011
+offset_bottom = 503.463
+scale = Vector2(1.80841, 1.02413)
 theme_override_fonts/font = ExtResource("2_683uh")
 text = "Sair"
 flat = true
@@ -80,6 +173,46 @@ position = Vector2(911.224, 450.366)
 stream = ExtResource("5_dants")
 autoplay = true
 
+[node name="MenuAmalgamate" type="CharacterBody2D" parent="."]
+position = Vector2(733.006, 451.301)
+scale = Vector2(2.35711, 2.38323)
+script = ExtResource("6_jjc6g")
+
+[node name="AmalgamateSprite2D" type="Sprite2D" parent="MenuAmalgamate"]
+position = Vector2(1.28421, -0.0323866)
+scale = Vector2(1.60581, 1.43548)
+texture = ExtResource("7_u1uqv")
+hframes = 7
+vframes = 2
+frame = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MenuAmalgamate"]
+position = Vector2(0.284203, -0.0323867)
+scale = Vector2(2.54121, 2.47078)
+shape = SubResource("RectangleShape2D_yrrvd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuAmalgamate"]
+libraries = {
+"": SubResource("AnimationLibrary_3hg8h"),
+"Global": SubResource("AnimationLibrary_02qq2")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MenuAmalgamate"]
+
+[node name="ButtonIniciarJogo2" type="Button" parent="."]
+offset_left = 1006.88
+offset_top = 435.416
+offset_right = 1085.88
+offset_bottom = 533.416
+scale = Vector2(0.865635, 0.690798)
+theme_override_fonts/font = ExtResource("2_683uh")
+text = "Controles:
+W - Up
+D - Down
+A - Left
+S - Right"
+flat = true
+
 [connection signal="pressed" from="ButtonIniciarJogo" to="." method="_on_button_iniciar_jogo_pressed"]
-[connection signal="pressed" from="ButtonControles" to="." method="_on_button_controles_pressed"]
 [connection signal="pressed" from="ButtonSair" to="." method="_on_button_sair_pressed"]
+[connection signal="pressed" from="ButtonIniciarJogo2" to="." method="_on_button_iniciar_jogo_pressed"]
